@@ -25,6 +25,12 @@ class App extends Component {
       password
     })
   }
+  createIt(username, password){
+    axios.put("/api/hereComesThePW", {
+      username,
+      password
+    })
+  }
 
   render() {
     return (
@@ -35,7 +41,8 @@ class App extends Component {
         </header>
         <input onChange={e => this.usernameHandler(e.target.value)} />
         <input onChange={e => this.passwordHandler(e.target.value)} />
-        <button onClick={()=> this.sendIt(this.state.usernameText, this.state.passwordText)}>Submit</button>
+        <button onClick={()=> this.sendIt(this.state.usernameText, this.state.passwordText)}>Sign In</button>
+        <button onClick={()=> this.createIt(this.state.usernameText, this.state.passwordText)}>Register </button>
       </div>
     )
   }
