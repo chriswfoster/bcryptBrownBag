@@ -20,16 +20,17 @@ class App extends Component {
     this.setState({ passwordText: val })
   }
   sendIt(username, password) {
-    axios.put("/api/hereComesThePW", {
+    axios.put("/api/hereComesThePWTest", {
       username,
       password
-    })
+    }).then(response => console.log(response))
   }
   createIt(username, password){
-    axios.put("/api/hereComesThePW", {
+    axios.put("/api/hereComesTheNewUser", {
       username,
       password
     })
+    .then (response => console.log(response))
   }
 
   render() {
