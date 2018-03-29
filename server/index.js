@@ -4,13 +4,20 @@ const express = require('express')
 const massive = require('massive')
 const bcrypt = require ('bcrypt')
 
+const controller = require("./controller.js")
+
 const port = 3001;
 
 const app = express()
 app.use(cors())
 app.use(json())
 
+const massiveConnection = massive(process.env.connectionString) // tell massive to make the connection
+.then(db => app.set("db", db)) // if connection exists, set 'db' to db
+.catch(console.log)
 
+
+app.put('/api/hereComesThePW', controller.passwordChecker)
 
 
 app.listen(port, () => console.log(`You are now listening to ${port}FM.`))
